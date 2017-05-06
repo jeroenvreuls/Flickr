@@ -58,7 +58,7 @@ class Api
         $guzzleResponse = $this->client->get($this->api().'&method='.$call.$this->parameters($parameters));
 
         if ($guzzleResponse->getStatusCode() == 200) {
-            return new Response($guzzleResponse);
+            return new Response($guzzleResponse, $format);
         } else {
             return 'Failed request';
         }

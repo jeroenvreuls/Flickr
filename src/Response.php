@@ -17,8 +17,9 @@ class Response
      * Create a new Response instance.
      *
      * @param \Psr\Http\Message\ResponseInterface $guzzleResponse
+     * @param string $format
      */
-    public function __construct(ResponseInterface $guzzleResponse)
+    public function __construct(ResponseInterface $guzzleResponse, $format)
     {
         $this->contents = unserialize($guzzleResponse->getBody()->getContents());
     }
