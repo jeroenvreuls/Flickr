@@ -17,11 +17,10 @@ class Response
      * Create a new Response instance.
      *
      * @param \Psr\Http\Message\ResponseInterface $guzzleResponse
-     * @param string $format
      */
-    public function __construct(ResponseInterface $guzzleResponse, $format)
+    public function __construct(ResponseInterface $guzzleResponse)
     {
-        $this->contents = unserialize($guzzleResponse->getBody()->getContents());
+        $this->contents = json_decode($guzzleResponse->getBody()->getContents(), true);
     }
 
     /**

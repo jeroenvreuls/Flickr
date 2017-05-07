@@ -31,14 +31,12 @@ class Api
      * Create a new Flickr Api instance.
      *
      * @param  string $apiKey
-     * @param  string $format
      * @param  string $endpoint
      * @return void
      */
-    public function __construct($apiKey, $format = 'rest', $endpoint = 'https://api.flickr.com/services/rest/')
+    public function __construct($apiKey, $endpoint = 'https://api.flickr.com/services/rest/')
     {
         $this->key = $apiKey;
-        $this->format = $format;
 
         $this->client = new Client([
             // Base URI is used with relative requests
@@ -58,7 +56,7 @@ class Api
         $guzzleResponse = $this->client->get($this->api().'&method='.$call.$this->parameters($parameters));
 
         if ($guzzleResponse->getStatusCode() == 200) {
-            return new Response($guzzleResponse, $format);
+            return new Response($guzzleResponse);
         } else {
             return 'Failed request';
         }
@@ -71,7 +69,7 @@ class Api
      */
     protected function api()
     {
-        return '?api_key='.$this->key.'&format='.$this->format;
+        return '?api_key='.$this->key.'&format=json&nojsoncallback=1';
     }
 
     /**

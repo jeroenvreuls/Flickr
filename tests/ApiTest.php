@@ -6,7 +6,7 @@ class ApiTest extends TestCase
 
     public function __construct()
     {
-        $api = new JeroenG\Flickr\Api($_ENV['FLICKR_KEY'], 'php_serial');
+        $api = new JeroenG\Flickr\Api($_ENV['FLICKR_KEY']);
         $this->flickr = new JeroenG\Flickr\Flickr($api);
     }
 
@@ -15,6 +15,5 @@ class ApiTest extends TestCase
         $test = $this->flickr->echoThis('helloworld');
 
         $this->assertEquals('ok', $test->stat);
-        $this->assertEquals('php_serial', $test->getContent('format'));
     }
 }

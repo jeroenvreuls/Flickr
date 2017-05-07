@@ -19,8 +19,8 @@ $ composer require jeroen-g/flickr
 ### General
 
 ```php
-// $key is your Flickr API key. $format is optional, it sets the Flickr response format.
-$flickr = new JeroenG\Flickr\Flickr(new JeroenG\Flickr\Api($key, $format));
+// $key is your Flickr API key.
+$flickr = new JeroenG\Flickr\Flickr(new JeroenG\Flickr\Api($key));
 
 // https://www.flickr.com/services/api/flickr.test.echo.html
 $echoTest = $flickr->echoThis('helloworld');
